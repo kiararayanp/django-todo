@@ -8,6 +8,7 @@ A simple todo application built with Django, demonstrating basic CRUD (Create, R
 - Read tasks
 - Update tasks
 - Delete tasks
+- Search tasks
 
 ## Requirements
 
