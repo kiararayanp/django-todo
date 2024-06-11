@@ -5,12 +5,15 @@ from .models import Todo
 
 
 def index(request):
+    todos = Todo.objects.all()
+    q = request.GET.get("q")
+    if q:
+        todos = Todo.objects.filter(task__icontains=q)
     if request.method == "POST":
         my_todo = request.POST.get("my_todo")
         todo = Todo(task=my_todo)
         todo.save()
         return redirect("home")
-    todos = Todo.objects.all()
     context = {"todos": todos}
     return render(request, "todo/index.html", context)
 
