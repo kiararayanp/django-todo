@@ -1,0 +1,23 @@
+{% extends 'common.html'%}
+{%block content%}
+{% include 'navbar.html'%}
+<div class="container mt-5">
+    <form class="d-flex mb-5" role="search" method="post">
+        {%csrf_token%}
+        <input name="my_todo" class="form-control me-2" type="search" placeholder="Enter todo" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Add</button>
+    </form>
+    <!-- looping todos -->
+    {%for todo in todos%}
+    <div class="my-3 d-flex justify-content-between">
+        <p>{{todo.task}}</p>
+        <div>
+            <a href="{%url 'edit' todo.id%}"><button class="btn btn-secondary btn-sm">Edit</button></a>
+            <a href="{%url 'delete' todo.id%}"><button class="btn btn-danger btn-sm">Delete</button></a>
+        </div>
+    </div>
+    {%endfor%}
+
+
+</div>
+{%endblock content%}

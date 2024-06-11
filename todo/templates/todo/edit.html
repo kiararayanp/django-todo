@@ -1,0 +1,11 @@
+{% extends 'common.html'%}
+{%block content%}
+{% include 'navbar.html'%}
+<div class="container mt-5">
+    <form class="d-flex mb-5" role="search" method="post">
+        {%csrf_token%}
+        <input name="my_todo" class="form-control me-2" type="search" value="{{todo.task}}" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Update</button>
+    </form>
+</div>
+{%endblock content%}
